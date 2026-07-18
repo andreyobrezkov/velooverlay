@@ -1,0 +1,1267 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="description" content="Step-by-step guide to importing activities, editing overlays, and rendering telemetry videos with the VeloOverlay Toolkit."><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/velooverlay/favicon.svg"><meta name="generator" content="Astro v6.1.6"><title>User Guide | VeloOverlay Toolkit</title><link rel="stylesheet" href="/velooverlay/_astro/BaseLayout.CtCCzjvl.css"></head> <body class="bg-slate-950 text-slate-50 min-h-screen flex flex-col font-sans antialiased"> <header class="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur"> <div class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8"> <div class="flex items-center gap-2"> <a href="/velooverlay/" class="flex items-center space-x-2"> <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">VeloOverlay Toolkit</span> </a> </div> <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300"> <a href="/velooverlay/#features" class="hover:text-white transition-colors">How it works</a> <a href="/velooverlay/#demo" class="hover:text-white transition-colors">Demo</a> <a href="/velooverlay/#faq" class="hover:text-white transition-colors">FAQ</a> <a href="/velooverlay/blog" class="hover:text-white transition-colors">Blog</a> <a href="/velooverlay/docs" class="hover:text-white transition-colors">Docs</a> </nav> <div class="flex items-center space-x-4"> <a href="https://github.com/andreyobrezkov/velooverlay" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white transition-colors"> <span class="sr-only">GitHub</span> <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path> </svg> </a> <a href="https://www.facebook.com/profile.php?id=61586584646637" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white transition-colors"> <span class="sr-only">Facebook</span> <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path> </svg> </a> <a href="/velooverlay/download" class="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
+Download
+</a> </div> </div> </header> <main class="flex-grow">  <article class="py-20 sm:py-28"> <div class="px-6 lg:px-8"> <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4"> <a href="/velooverlay/" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition-colors hover:text-white"> <span aria-hidden="true">←</span>
+Back to home
+</a> <a href="/velooverlay/USER_GUIDE.pdf" class="inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition-colors hover:border-slate-500 hover:text-white">
+Download PDF
+</a> </div> <div class="docs-prose mx-auto mt-10 max-w-3xl"> <h1 id="velooverlay-toolkit---user-guide">VeloOverlay Toolkit - User Guide</h1>
+<p><strong>Version 1.9 | May 2026</strong></p>
+<p>Welcome to the VeloOverlay Toolkit desktop app. This guide focuses on the installed
+Electron version and walks through importing activities, editing overlays, and rendering
+videos offline.</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#quick-start-desktop">Quick Start (Desktop)</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#first-launch--settings">First Launch &#x26; Settings</a></li>
+<li><a href="#updating-the-app">Updating the App</a></li>
+<li><a href="#importing-an-activity-fitgpxtcx">Importing an Activity (FIT/GPX/TCX)</a></li>
+<li><a href="#importing-from-strava">Importing from Strava</a></li>
+<li><a href="#render-notifications-telegram">Render Notifications (Telegram)</a></li>
+<li><a href="#understanding-the-editor">Understanding the Editor</a></li>
+<li><a href="#timeline-zoom--scrubbing">Timeline Zoom &#x26; Scrubbing</a></li>
+<li><a href="#multi-track-trim">Multi-Track Trim</a></li>
+<li><a href="#media-files-tab">Media Files Tab</a></li>
+<li><a href="#video-playback-under-the-hood">Video Playback (Under the Hood)</a></li>
+<li><a href="#multi-clip-video-sequences">Multi-Clip Video Sequences</a></li>
+<li><a href="#canvas-sizes--square-source-video">Canvas Sizes &#x26; Square-Source Video</a></li>
+<li><a href="#gopro-auto-sync">GoPro Auto Sync</a></li>
+<li><a href="#working-with-widgets">Working with Widgets</a></li>
+<li><a href="#icon-picker">Icon Picker</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#output-transform">Output Transform</a></li>
+<li><a href="#social-clips">Social Clips</a></li>
+<li><a href="#top-moments">Top Moments</a></li>
+<li><a href="#flyover-map">Flyover Map</a></li>
+<li><a href="#estimated-wind">Estimated Wind</a></li>
+<li><a href="#hud-presets--theme-links">HUD Presets &#x26; Theme Links</a></li>
+<li><a href="#rendering-videos">Rendering Videos</a></li>
+<li><a href="#uploading-to-youtube">Uploading to YouTube</a></li>
+<li><a href="#lut-color-correction">LUT Color Correction</a></li>
+<li><a href="#exporting-images">Exporting Images</a></li>
+<li><a href="#managing-output--logs">Managing Output &#x26; Logs</a></li>
+<li><a href="#tips--best-practices">Tips &#x26; Best Practices</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ol>
+<hr>
+<h2 id="quick-start-desktop">Quick Start (Desktop)</h2>
+<ol>
+<li>
+<p><strong>Install and launch the app</strong></p>
+<ul>
+<li>Windows: run the <code>.exe</code> installer.</li>
+<li>macOS: open the <code>.dmg</code> and drag the app into Applications.</li>
+<li>Linux: run the <code>.AppImage</code> (make it executable first).</li>
+</ul>
+</li>
+<li>
+<p><strong>Open Settings</strong></p>
+<ul>
+<li><strong>Paths tab</strong>: Set <strong>Default Input Folder</strong>, <strong>Default Output Folder</strong>, and <strong>Logs Directory</strong>.</li>
+<li><strong>Paths tab</strong>: Choose <strong>FFmpeg Path</strong> if you use a system install.</li>
+<li><strong>General tab</strong>: Pick a <strong>Profile Image</strong> for the comments widget (32–200 px).</li>
+</ul>
+</li>
+<li>
+<p><strong>Import a track</strong></p>
+<ul>
+<li>Click <strong>Start new project</strong> and upload a FIT/GPX file.</li>
+</ul>
+</li>
+<li>
+<p><strong>Design your overlay</strong></p>
+<ul>
+<li>Add widgets, position them, and tune styles.</li>
+</ul>
+</li>
+<li>
+<p><strong>Render</strong></p>
+<ul>
+<li>Choose Overlay or Composite mode.</li>
+<li>When complete, use <strong>Open output folder</strong> to find the result.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Start screen" loading="lazy" decoding="async"  width="3840" height="2160" src="/velooverlay/_astro/start.8ssI759W_wM3xf.webp" ></p>
+<hr>
+<h2 id="installation">Installation</h2>
+<h3 id="windows">Windows</h3>
+<ul>
+<li>Run the installer (unsigned internal build).</li>
+<li>Choose an install location and launch VeloOverlay Toolkit.</li>
+</ul>
+<h3 id="macos">macOS</h3>
+<ul>
+<li>Open the DMG and drag the app into Applications.</li>
+<li>Launch the app from Applications.</li>
+</ul>
+<h3 id="linux">Linux</h3>
+<ul>
+<li>Download the AppImage.</li>
+<li>Make it executable and run it:
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +x</span><span style="color:#9ECBFF"> VeloOverlay.AppImage</span></span>
+<span class="line"><span style="color:#B392F0">./VeloOverlay.AppImage</span></span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="first-launch--settings">First Launch &#x26; Settings</h2>
+<p>Open <strong>Settings</strong> from the home page. Settings are organized into six tabs in a left sidebar:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tab</th><th>Contents</th></tr></thead><tbody><tr><td><strong>General</strong></td><td>Athlete profile (image, FTP, HR max, cadence ref), units, editor preferences</td></tr><tr><td><strong>Paths</strong></td><td>Project folders (input/output), logs folder, FFmpeg path</td></tr><tr><td><strong>Rendering</strong></td><td>Default encoder mode, HEVC preference, image export defaults</td></tr><tr><td><strong>Logging &#x26; Diagnostics</strong></td><td>Log level, usage tracking, doctor check, diagnostic bundle export</td></tr><tr><td><strong>Integrations</strong></td><td>Strava OAuth credentials; Telegram render notifications</td></tr><tr><td><strong>Advanced</strong></td><td>Factory reset, danger-zone actions</td></tr></tbody></table>
+<p>The active tab is remembered across sessions.</p>
+<p><img alt="Settings" loading="lazy" decoding="async"  width="3840" height="2160" src="/velooverlay/_astro/settings.BQ1xdjJN_ZYY3pR.webp" ></p>
+<h3 id="general-tab">General Tab</h3>
+<ul>
+<li><strong>Profile Image</strong>: Used by the comments widget. Must be 32–200 px (PNG/JPG/WEBP). Click <strong>Choose Image</strong> to pick a file.</li>
+<li><strong>Athlete Values</strong>: Set your FTP (W), Max Heart Rate (bpm), and Cadence Reference (rpm) for training-zone calculations.</li>
+<li><strong>Default Units</strong>: Speed (km/h / mph), Distance (km / mi), Elevation (m / ft).</li>
+<li><strong>Editor → Context Help</strong>: Toggle inline help buttons next to editor controls.</li>
+<li><strong>About</strong> <em>(desktop only)</em>: Shows the installed version and a <strong>Check for updates</strong> button — see <a href="#updating-the-app">Updating the App</a>.</li>
+</ul>
+<h3 id="paths-tab">Paths Tab</h3>
+<ul>
+<li><strong>Default Input Folder</strong>: Where you keep source videos (used by video dropdowns).</li>
+<li><strong>Default Output Folder</strong>: Rendered videos are saved here by default.</li>
+<li><strong>Logs Directory</strong>: Desktop + web logs are written here.</li>
+<li><strong>FFmpeg Path</strong>: Optional override if you use a system FFmpeg install.</li>
+<li><strong>LUT Library Folder</strong> <em>(desktop only)</em>: Folder scanned for <code>.cube</code> LUT files available in the Video Tuning panel. Defaults to <code>&#x3C;userData>/luts/</code>.</li>
+</ul>
+<h3 id="rendering-tab">Rendering Tab</h3>
+<ul>
+<li><strong>Encode Mode</strong>: <code>Auto</code> (best available), <code>Fast</code> (speed priority), or <code>Quality</code> (size priority).</li>
+<li><strong>Prefer HEVC</strong>: Use H.265 when available for smaller file sizes.</li>
+<li><strong>Image Export Defaults</strong>: Format (PNG/JPG), size (720p / 1080p / 4K), JPG quality slider, and GPS metadata embedding.</li>
+</ul>
+<h3 id="docs">Docs</h3>
+<p>In the desktop app, open <strong>Help → Documentation</strong> for the offline user guide and technical docs.</p>
+<hr>
+<h2 id="updating-the-app">Updating the App</h2>
+<p>The desktop app keeps itself up to date automatically <em>(desktop only)</em>.</p>
+<ul>
+<li><strong>Automatic check on launch</strong>: A few seconds after the app opens, it checks GitHub for a newer release. If one is found, it downloads in the background.</li>
+<li><strong>Home-screen indicator</strong>: When an update is downloading or ready, an orange <strong>Update</strong> badge appears next to the version in the “Desktop Edition” pill on the home screen. Click it once the update is downloaded to restart and install.</li>
+<li><strong>Restart to install</strong>: When the download finishes, a banner also appears in the bottom-right corner — click <strong>Restart to install</strong> to relaunch into the new version. (You can also dismiss it with <strong>Later</strong>; the update installs automatically the next time you quit the app.)</li>
+<li><strong>Manual check</strong>: Go to <strong>Settings → General → About</strong> to see your installed version and click <strong>Check for updates</strong> at any time.</li>
+</ul>
+<p>No reinstall or manual download is needed — updates apply in place.</p>
+<hr>
+<h2 id="importing-an-activity-fitgpxtcx">Importing an Activity (FIT/GPX/TCX)</h2>
+<h3 id="supported-formats">Supported Formats</h3>
+<ul>
+<li><strong>FIT</strong>: Garmin, Wahoo, and other ANT+/BLE devices — richest data (power, HR, cadence, temperature, running dynamics)</li>
+<li><strong>GPX</strong>: Most GPS devices and apps — GPS track + elevation</li>
+<li><strong>TCX</strong>: Garmin Training Center XML — GPS + HR + cadence + power; commonly exported by Garmin Connect and Strava</li>
+</ul>
+<h3 id="how-to-import">How to Import</h3>
+<ol>
+<li>Click <strong>Start new project</strong> on the home screen.</li>
+<li>Upload your <code>.fit</code>, <code>.tcx</code>, or <code>.gpx</code> file.</li>
+<li>Wait for parsing, then click <strong>Go to Editor</strong>.</li>
+</ol>
+<h3 id="tips">Tips</h3>
+<ul>
+<li>Use original FIT files from your device for the most complete data (power, HR, cadence, temperature).</li>
+<li>TCX is a good alternative when FIT is unavailable — it carries more metrics than GPX.</li>
+<li>Avoid heavily edited/trimmed files if parsing fails.</li>
+</ul>
+<hr>
+<h2 id="importing-from-strava">Importing from Strava</h2>
+<p>Connect your Strava account to browse and import activities directly — no manual FIT/GPX download required.</p>
+<h3 id="setup">Setup</h3>
+<h4 id="desktop-app">Desktop app</h4>
+<ol>
+<li>Open <strong>Settings → Integrations</strong> tab.</li>
+<li>Enter your <strong>Client ID</strong> and <strong>Client Secret</strong> from the <a href="https://www.strava.com/settings/api">Strava API settings</a>.</li>
+<li>Set the <strong>Redirect URI</strong> to match what you registered in the Strava API settings (e.g. <code>http://localhost:3000/strava/callback</code>).</li>
+<li>Click <strong>Save Settings</strong>.</li>
+</ol>
+<h4 id="web-mode">Web mode</h4>
+<p>Set the following environment variables in <code>apps/web/.env.local</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>STRAVA_CLIENT_ID=&#x3C;your_client_id></span></span>
+<span class="line"><span>STRAVA_CLIENT_SECRET=&#x3C;your_client_secret></span></span>
+<span class="line"><span>STRAVA_REDIRECT_URI=http://localhost:3000/strava/callback</span></span></code></pre>
+<p>Alternatively, go to <strong>Settings → Integrations</strong> in the web UI and enter the credentials there.</p>
+<h3 id="connecting">Connecting</h3>
+<ol>
+<li>Click <strong>Import from Strava</strong> in the editor header (or from the start screen).</li>
+<li>The Strava activity picker opens. If not yet connected, click <strong>Connect Strava</strong>.</li>
+<li>You are redirected to Strava’s authorization page — approve access and you are returned to the editor.</li>
+</ol>
+<h3 id="importing-an-activity">Importing an Activity</h3>
+<ol>
+<li>Once connected, the picker shows your recent activities grouped by sport type.</li>
+<li>Use the <strong>Sport type</strong> filter to narrow the list (Cycling, Running, etc.).</li>
+<li>Each activity shows name, date, distance, and moving time.</li>
+<li>Click an activity to download it. The app fetches all available streams from Strava (GPS, time, altitude, distance, heart rate, cadence, power, temperature) and converts them to a TCX file automatically.</li>
+<li>The track is parsed and loaded — click <strong>Go to Editor</strong> to proceed.</li>
+</ol>
+<h3 id="what-data-is-available-from-strava">What Data Is Available from Strava</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Availability</th></tr></thead><tbody><tr><td>GPS (lat/lon)</td><td>Always</td></tr><tr><td>Altitude</td><td>Always</td></tr><tr><td>Distance</td><td>Always</td></tr><tr><td>Heart Rate</td><td>If recorded by your device and shared on Strava</td></tr><tr><td>Cadence</td><td>If recorded by your device</td></tr><tr><td>Power</td><td>If recorded by a power meter</td></tr><tr><td>Temperature</td><td>If recorded by your device</td></tr></tbody></table>
+<h3 id="tips-1">Tips</h3>
+<ul>
+<li>Strava imports now use TCX format and include HR, cadence, power, and temperature where available — you no longer need a separate FIT file for those metrics.</li>
+<li>If your device recorded power or HR but the data is missing from the import, check that <strong>Privacy controls</strong> on the Strava activity allow data sharing.</li>
+<li>The editor header shows a <strong>Strava</strong> source badge and links to the original activity page when a Strava-sourced track is loaded.</li>
+<li>Click <strong>Disconnect</strong> in the Strava picker to revoke the stored tokens at any time.</li>
+<li>Rate limits: Strava allows 100 requests per 15 minutes. If you hit the limit, wait a moment and try again.</li>
+</ul>
+<hr>
+<h2 id="render-notifications-telegram">Render Notifications (Telegram)</h2>
+<p>Get render progress pushed to a Telegram chat so you can walk away from long renders.</p>
+<h3 id="setup-1">Setup</h3>
+<ol>
+<li>In Telegram, message <a href="https://t.me/BotFather">@BotFather</a>, send <code>/newbot</code>, and follow the prompts to get a <strong>bot token</strong>.</li>
+<li>Start a chat with your new bot (send it any message), then find your numeric <strong>chat ID</strong> — for example by messaging <a href="https://t.me/userinfobot">@userinfobot</a>.</li>
+<li>Open <strong>Settings → Integrations → Telegram</strong>, paste the <strong>Bot Token</strong> and <strong>Chat ID</strong>, choose when to be notified, and click <strong>Save</strong>.</li>
+<li>Click <strong>Test</strong> to confirm a ”✅ Telegram connected” message arrives in your chat.</li>
+</ol>
+<h3 id="notify-modes">Notify modes</h3>
+<ul>
+<li><strong>Milestones</strong> (default): a message when the render starts, an update every 25% (or after each chunk for chunked renders), and a final message on completion.</li>
+<li><strong>Lifecycle</strong>: start and completion only.</li>
+<li><strong>Completion</strong>: a single message when the render finishes, fails, or is cancelled.</li>
+</ul>
+<p>The app sends <strong>one</strong> message per render and edits it in place as progress advances, so your chat is not flooded. Each message shows the <strong>project name</strong>, the time the render <strong>started</strong>, and the <strong>expected end time</strong> (projected from progress so far, refined as the render proceeds), alongside the progress bar, frame count, and ETA. Notifications are outbound only — the bot does not accept commands. Toggle <strong>Send render notifications</strong> off to pause them without clearing your credentials. In the desktop app the bot token is encrypted at rest via the OS keychain.</p>
+<hr>
+<h2 id="understanding-the-editor">Understanding the Editor</h2>
+<h3 id="layout-overview">Layout Overview</h3>
+<ul>
+<li><strong>Left</strong>: Widget list (enable/disable widgets; click a widget to select it)</li>
+<li><strong>Center</strong>: Live preview canvas (1280×720 by default; portrait / square canvases also supported — see <a href="#canvas-sizes--square-source-video">Canvas Sizes &#x26; Square-Source Video</a>)</li>
+<li><strong>Right</strong>: Widget inspector (per-widget settings or global HUD styles)</li>
+<li><strong>Bottom</strong>: Playback controls — play / pause, scrubber, <strong>zoom wheel</strong> (1×–40×), <strong>horizontal scrollbar</strong>, and the timeline rows for Main / Rear / Telemetry tracks</li>
+<li><strong>Bottom tabs</strong>: Media files · Auto Sync · Top Moments · Highlights · Comments · Output · Social Clips</li>
+</ul>
+<p><img alt="Editor layout" loading="lazy" decoding="async"  width="3840" height="2160" src="/velooverlay/_astro/editor.Ppb5zAv0_Z2dOmim.webp" ></p>
+<h3 id="right-panel-widget-inspector">Right Panel: Widget Inspector</h3>
+<p>The right panel adapts based on what is selected:</p>
+<ul>
+<li><strong>Nothing selected</strong>: Shows the full global style editor (Card, Pill, Icon, Text styles for all variants).</li>
+<li><strong>Widget selected</strong>: Shows a scope toggle:
+<ul>
+<li><strong>This widget</strong> — position, size, and type-specific settings for the selected widget.</li>
+<li><strong>All [style] style</strong> — global style editor filtered to the widget’s style variant.</li>
+</ul>
+</li>
+</ul>
+<h3 id="bottom-panel-tabs">Bottom Panel Tabs</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tab</th><th>Purpose</th></tr></thead><tbody><tr><td><strong>Media files</strong></td><td>Load and trim Main Video, Rear Video, and Telemetry CSV; set trim start/end and offset.</td></tr><tr><td><strong>Auto Sync</strong></td><td>Automatically compute the telemetry offset by matching GoPro GPS against the FIT track.</td></tr><tr><td><strong>Top Moments</strong></td><td>Detect performance peaks (speed, power, HR, climbs, jumps) and surface them as highlights. Add a moment to the Highlights overlay, then edit its label, start time, and duration inline in the same card.</td></tr><tr><td><strong>Comments</strong></td><td>Add timed text annotations that appear over the video.</td></tr><tr><td><strong>Output</strong></td><td>Global output framing for social clips — Reel (9:16) / Feed (1:1) / Custom W×H, rotation, fit mode, pan, audio. See <a href="#output-transform">Output Transform</a>.</td></tr><tr><td><strong>Social Clips</strong></td><td>Define short clips for social platforms (start time + duration + enable toggle). All clips render through the global Output Transform.</td></tr></tbody></table>
+<h3 id="key-actions">Key Actions</h3>
+<ul>
+<li><strong>Add Widget</strong>: Click a widget chip in the left panel to enable and select it.</li>
+<li><strong>Move Widget</strong>: Drag on the canvas or type exact X/Y values in the right panel.</li>
+<li><strong>Preset</strong>: Switch color themes from the editor header.</li>
+<li><strong>Export</strong>: Save telemetry CSV + <code>widgets.json</code> for external use.</li>
+</ul>
+<hr>
+<h2 id="timeline-zoom--scrubbing">Timeline Zoom &#x26; Scrubbing</h2>
+<p>The timeline supports up to <strong>40× zoom</strong> so you can edit long rides (4 hours +) precisely. The zoom wheel sits at the bottom-right of the timeline; a horizontal scrollbar appears below the rows when zoomed in.</p>
+<h3 id="using-the-zoom-wheel">Using the Zoom Wheel</h3>
+<ul>
+<li><strong>Drag the wheel up or down</strong> to zoom continuously (drag distance maps logarithmically to zoom factor).</li>
+<li><strong>Scroll your mouse wheel</strong> over the wheel for incremental steps.</li>
+<li><strong>Click the top half</strong> to zoom in one step, <strong>bottom half</strong> to zoom out.</li>
+<li><strong>Double-click</strong> the wheel (or press <strong><code>0</code></strong> / <strong>Home</strong>) to reset to fit-the-viewport.</li>
+<li><strong>Arrow keys</strong> nudge the zoom one step at a time when the wheel is focused.</li>
+</ul>
+<p>Each zoom change preserves the <strong>time under your cursor</strong> — wherever the pointer is when you zoom, that timestamp stays pinned to the same pixel. This makes it easy to drill into one moment of a long ride without losing your bearings.</p>
+<h3 id="horizontal-scrolling">Horizontal Scrolling</h3>
+<p>Once zoomed beyond 1×, the timeline scrolls horizontally:</p>
+<ul>
+<li><strong>Drag the scrollbar thumb</strong> below the timeline rows.</li>
+<li><strong>Click the scrollbar track</strong> on either side of the thumb to page (~90 % of the visible width).</li>
+<li><strong>Keyboard</strong>: focus the scrollbar and use <strong>arrows</strong>, <strong>PageUp/PageDown</strong>, <strong>Home</strong>, <strong>End</strong>.</li>
+<li>During playback the viewport <strong>auto-follows the playhead</strong>, scrolling smoothly so the playhead stays in view.</li>
+</ul>
+<h3 id="smoother-scrubbing">Smoother Scrubbing</h3>
+<p>When you drag the playhead, the widgets and timecode update instantly while the video catches up in the background. This keeps the scrubbing UI responsive even on multi-gigabyte source files.</p>
+<h3 id="speed-zone-gradient">Speed Zone Gradient</h3>
+<p>The telemetry row is now colored by <strong>instantaneous speed</strong> across the visible window — blue is slowest, red is fastest. Sustained high-speed sections jump out at a glance; flat-speed sections render as plain gray.</p>
+<hr>
+<h2 id="multi-track-trim">Multi-Track Trim</h2>
+<p>You can trim the start or end of multiple timeline tracks (Main video, Rear video, Telemetry) in a single click.</p>
+<ol>
+<li><strong>Select tracks</strong> — Ctrl-click (Cmd-click on macOS) the row labels at the left of the timeline. Selected rows highlight. Click without Ctrl/Cmd to select only that row.</li>
+<li><strong>Position the playhead</strong> at the time you want to trim to.</li>
+<li>Click <strong>Trim Start</strong> or <strong>Trim End</strong> above the timeline. The selected tracks update; unselected tracks are unchanged.</li>
+</ol>
+<h3 id="tips-2">Tips</h3>
+<ul>
+<li>The buttons disable when no tracks are selected or when the playhead is outside every selected track’s bounds.</li>
+<li>Trim values are clamped: Trim Start cannot exceed the current Trim End, and vice versa.</li>
+<li>Selection is not saved with the project — reopening the editor clears it.</li>
+<li>After a multi-track trim, any social clip whose range falls outside the new bounds becomes unrenderable; review the Social Clips list and adjust or delete affected clips.</li>
+</ul>
+<hr>
+<h2 id="media-files-tab">Media Files Tab</h2>
+<p>Load and align your video and telemetry files with the track.</p>
+<h3 id="how-it-works">How It Works</h3>
+<ol>
+<li>Open the <strong>Media files</strong> tab in the bottom panel.</li>
+<li>Select the <strong>Main Video</strong> file (or multiple files — see <a href="#multi-clip-video-sequences">Multi-Clip Video Sequences</a>).</li>
+<li>Optionally add a <strong>Rear Video</strong> for picture-in-picture overlays.</li>
+<li>Use the timeline controls to set the <strong>trim start</strong> and <strong>trim end</strong> for each source.</li>
+<li>Align playback with telemetry data so the overlay matches the footage.</li>
+</ol>
+<h3 id="tips-3">Tips</h3>
+<ul>
+<li>Use a recognizable moment (e.g., start of movement or a known landmark) to sync video and telemetry.</li>
+<li>The rear video is optional — needed only for PiP overlays.</li>
+<li>Use <strong>Auto Sync</strong> to compute the telemetry offset automatically if your main video is a GoPro.</li>
+<li>For HEVC GoPro clips, the editor automatically uses the <code>.LRV</code> sidecar or generates an H.264 proxy for smooth preview playback — see <a href="#video-playback-under-the-hood">Video Playback (Under the Hood)</a>.</li>
+</ul>
+<hr>
+<h2 id="video-playback-under-the-hood">Video Playback (Under the Hood)</h2>
+<p>The editor never plays the original render-source file directly. Instead, it resolves the <strong>lightest playable version</strong> of each video in the background and uses that for preview. Renders always use the original source at full quality.</p>
+<h3 id="resolution-order">Resolution Order</h3>
+<p>For each video file, the editor tries:</p>
+<ol>
+<li><strong><code>.LRV</code> sidecar</strong> — GoPro low-resolution-video file in the same folder (HERO 8+ recordings include these). Detected by filename pattern; validated for duration ± 2 s of the original.</li>
+<li><strong><code>.LRF</code> sidecar</strong> — DJI low-resolution-file equivalent. Same validation.</li>
+<li><strong>Cached H.264 proxy</strong> — if the editor has previously generated a proxy for this source, it’s reused. The cache key includes source size + modification time, so re-recording with the same filename re-generates.</li>
+<li><strong>Background proxy generation</strong> — a 1280-wide H.264 / CRF 28 / 15 fps proxy is generated via FFmpeg. A progress indicator appears in the video area while it runs; playback starts as soon as the proxy is ready.</li>
+</ol>
+<h3 id="when-youll-notice">When You’ll Notice</h3>
+<ul>
+<li><strong>GoPro HERO 8+ recordings</strong> — instant playback via <code>.LRV</code>. Nothing to wait for.</li>
+<li><strong>DJI recordings with <code>.LRF</code> sidecars</strong> — same.</li>
+<li><strong>First time opening an HEVC clip without a sidecar</strong> — short wait (proxy generation runs at roughly real time on a modern CPU; an 8-minute clip takes ~8 minutes the first time, then is instant).</li>
+<li><strong>Subsequent sessions</strong> — instant from the cache.</li>
+</ul>
+<h3 id="cache-location">Cache Location</h3>
+<ul>
+<li><strong>Desktop</strong>: under the app’s <code>userData</code> folder (cleared with the app’s Reset action).</li>
+<li><strong>Web</strong>: under <code>apps/web/.next/cache/media-proxies/</code>.</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li><strong>Multi-clip projects</strong> still use the older stitching flow for playback. Migration to the new resolver is planned (Milestone 4).</li>
+<li>The browser is never given the original-source path — only an opaque preview ID. This is a deliberate security boundary; do not rely on guessing media URLs in your scripts.</li>
+</ul>
+<hr>
+<h2 id="multi-clip-video-sequences">Multi-Clip Video Sequences</h2>
+<p>The editor supports multi-clip video sequences for both main and rear camera inputs. Load all chapter files from a split GoPro recording and the renderer stitches them transparently before encoding.</p>
+<p>There are two ways to work with split recordings: <strong>Combine Clips</strong> up front (recommended), or load them as an in-editor sequence.</p>
+<h3 id="combine-clips-before-editing-recommended">Combine Clips Before Editing (Recommended)</h3>
+<p>On the <strong>home screen</strong> (desktop app), click <strong>Combine Clips</strong> to stitch your chapters into a single file <em>before</em> you start editing. This is the simplest workflow for split GoPro recordings:</p>
+<ol>
+<li>Click <strong>Combine Clips</strong> on the home screen.</li>
+<li><strong>Add main camera clips</strong> (and optionally rear camera clips) — select all chapters at once. Reorder with the ↑ / ↓ buttons; remove with ✕. Each clip shows its resolution/codec <strong>and whether a GoPro <code>.LRV</code> or DJI <code>.LRF</code> sidecar was detected</strong> (used to build a fast preview).</li>
+<li>Choose whether to <strong>keep audio</strong> from the main camera.</li>
+<li>Click <strong>Combine clips</strong>. The app first checks the output drive has enough free space (the combined file is roughly the size of all the clips added together) and warns you if it doesn’t. It then concatenates each camera’s chapters into one file (lossless <code>-c copy</code>, fast). It also stitches the matching <code>.LRV</code>/<code>.LRF</code> sidecars into a single low-resolution preview proxy (or generates one if some clips lack a sidecar).</li>
+<li>When it finishes, optionally <strong>Move originals to Recycle Bin</strong> to reclaim disk space (the combined files are kept; this is recoverable from the Recycle Bin).</li>
+<li>Click <strong>Open in editor</strong> — the editor opens on the single combined files.</li>
+</ol>
+<p><strong>Why combine first?</strong></p>
+<ul>
+<li><strong>Re-render freely.</strong> Because the editor works on a single file, re-rendering with different settings never re-stitches the source clips.</li>
+<li><strong>Simpler trimming &#x26; image export.</strong> Everything operates on one continuous file.</li>
+<li><strong>Reclaim space.</strong> Once combined, you can delete the original chapter files and keep just the stitched output.</li>
+</ul>
+<p>The combined files are written to a <code>stitched/</code> folder inside your input directory. Combining is a desktop-only feature.</p>
+<h3 id="how-to-add-multiple-clips-in-editor-sequence">How to Add Multiple Clips (In-Editor Sequence)</h3>
+<ol>
+<li>In the <strong>Media files</strong> tab, click <strong>+ Multi</strong> next to the Main Video or Rear Video selector.</li>
+<li>Select all chapter files at once in the file dialog.</li>
+<li>A badge shows the number of clips loaded (e.g., <strong>4 clips</strong>).</li>
+<li>Click <strong>Manage clips (4)</strong> to open the clip manager.</li>
+</ol>
+<h3 id="manage-clips-modal">Manage Clips Modal</h3>
+<ul>
+<li><strong>Reorder</strong>: Drag clips to change their order.</li>
+<li><strong>Metadata</strong>: Each clip shows duration, resolution, fps, and codec.</li>
+<li><strong>Running total</strong>: The footer shows the combined duration of all clips.</li>
+<li><strong>Incompatible clips</strong>: A warning is shown if a clip’s resolution or fps differs from the first clip.</li>
+<li>Click <strong>Save</strong> to commit the order, or <strong>Cancel</strong> to discard changes.</li>
+</ul>
+<h3 id="why-use-multi-clip">Why Use Multi-Clip</h3>
+<ul>
+<li>GoPro cameras split long recordings into 4 GB chapter files. Load all chapters as a sequence for a single continuous render.</li>
+<li>Stitching is lossless (<code>-c copy</code>) and fast — a 40-minute, 4-chapter ride stitches in seconds.</li>
+<li>Existing single-video projects load without changes.</li>
+</ul>
+<h3 id="playback-for-multi-clip-projects">Playback for Multi-Clip Projects</h3>
+<p>Single-file projects use the new sidecar-or-proxy resolver described in <a href="#video-playback-under-the-hood">Video Playback (Under the Hood)</a>. <strong>Multi-clip projects still use the legacy stitch-and-preview flow</strong> — the editor builds a temporary stitched preview the first time you load the project. Migration of multi-clip playback to the new resolver is planned for a future release.</p>
+<hr>
+<h2 id="canvas-sizes--square-source-video">Canvas Sizes &#x26; Square-Source Video</h2>
+<p>VeloOverlay supports output canvas presets beyond the default 16:9 widescreen, which is useful when your source footage has a non-standard aspect ratio (e.g. GoPro square sensor or portrait crop).</p>
+<h3 id="canvas-presets">Canvas Presets</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Preset</th><th>Resolution</th><th>Use case</th></tr></thead><tbody><tr><td><strong>16:9</strong></td><td>1280 × 720</td><td>Standard widescreen (default)</td></tr><tr><td><strong>Square</strong></td><td>720 × 720</td><td>Instagram square posts</td></tr><tr><td><strong>4:3</strong></td><td>960 × 720</td><td>GoPro wide/linear square sensor clips</td></tr><tr><td><strong>9:16</strong></td><td>405 × 720</td><td>Portrait (Instagram Reels, TikTok)</td></tr></tbody></table>
+<h3 id="square-source-detection">Square-Source Detection</h3>
+<p>When you load a GoPro clip recorded in <strong>Wide</strong> or <strong>Linear</strong> mode at a square sensor resolution, the editor automatically detects the native aspect ratio and suggests a matching canvas preset. Accept the suggestion or pick a different preset from the dropdown in the editor header.</p>
+<h3 id="crop-workflow">Crop Workflow</h3>
+<ol>
+<li>Load your video in the <strong>Media files</strong> tab.</li>
+<li>If the editor detects a non-standard source, a preset suggestion appears — click <strong>Apply</strong> to switch the canvas.</li>
+<li>You can also manually select a preset from the <strong>Canvas</strong> dropdown in the editor header at any time.</li>
+<li>Position and resize widgets within the new canvas boundary. The design space always maps to the selected output resolution.</li>
+<li>Render as usual — the output file will have the chosen dimensions.</li>
+</ol>
+<h3 id="tips-4">Tips</h3>
+<ul>
+<li>Changing the canvas preset repositions widgets proportionally where possible.</li>
+<li>For social clips in portrait orientation, combine the <strong>9:16</strong> canvas with the <strong>Social Clips</strong> tab to define clip segments.</li>
+<li>See <code>docs/square-source-video.md</code> for additional crop workflow details and the full list of supported presets.</li>
+</ul>
+<hr>
+<h2 id="gopro-auto-sync">GoPro Auto Sync</h2>
+<p>Automatically compute the telemetry start offset by matching GoPro GPS positions against the FIT track — no manual scrubbing required.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>A GoPro video loaded as the main video (must contain embedded GPS data).</li>
+<li>A FIT file loaded as telemetry.</li>
+</ul>
+<h3 id="how-to-use">How to Use</h3>
+<ol>
+<li>Click the <strong>Auto Sync</strong> tab in the bottom panel.</li>
+<li>Click <strong>Extract GPS from Video</strong> and wait for the sample count to appear.</li>
+<li>Click <strong>Auto-sync</strong> — the app matches GPS positions using haversine minimization.</li>
+<li>Review the result: <strong>offset (seconds)</strong>, <strong>confidence</strong> (High / Medium / Low), and <strong>mean GPS distance (m)</strong>.</li>
+<li>Click <strong>Apply Offset</strong> to write the value to the telemetry timeline.</li>
+<li>Verify alignment on the canvas before rendering.</li>
+</ol>
+<h3 id="confidence-levels">Confidence Levels</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Confidence</th><th>Mean GPS Error</th><th>Interpretation</th></tr></thead><tbody><tr><td><strong>High</strong></td><td>&#x3C; 20 m</td><td>Tracks overlap cleanly — offset is reliable.</td></tr><tr><td><strong>Medium</strong></td><td>20–100 m</td><td>Usable, but verify on the canvas.</td></tr><tr><td><strong>Low</strong></td><td>> 100 m</td><td>Tracks may not cover the same route segment at all.</td></tr></tbody></table>
+<h3 id="tips-5">Tips</h3>
+<ul>
+<li>Extracted GPS is cached server-side for the session — re-running sync costs no extra extraction time.</li>
+<li>The search window is ±180 seconds by default, which covers most alignment scenarios.</li>
+<li>Low confidence usually means the GoPro GPS and FIT file cover different parts of the activity. Check that you loaded the correct files.</li>
+</ul>
+<hr>
+<h2 id="working-with-widgets">Working with Widgets</h2>
+<p>Widgets are the building blocks of your overlay. Each widget is independently positioned, sized, and styled on the 1280×720 design canvas.</p>
+<h3 id="telemetry-widgets">Telemetry Widgets</h3>
+<p>Display live data values from your FIT/GPX track. All are enabled by default.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Widget</th><th>What it shows</th></tr></thead><tbody><tr><td><strong>Speed</strong></td><td>Current speed with optional rolling average</td></tr><tr><td><strong>Heart Rate</strong></td><td>Current HR with optional average</td></tr><tr><td><strong>Cadence</strong></td><td>Current cadence with optional average</td></tr><tr><td><strong>Power</strong></td><td>Current power output with optional average</td></tr><tr><td><strong>Grade</strong></td><td>Current road gradient (%)</td></tr><tr><td><strong>Distance</strong></td><td>Cumulative distance</td></tr><tr><td><strong>Altitude</strong></td><td>Current elevation</td></tr></tbody></table>
+<p>Each telemetry widget supports: position (X/Y), preset size (Small / Medium / Big), unit selection, decimal precision, smoothing, and optional icon / average display.</p>
+<h3 id="visualisation-widgets">Visualisation Widgets</h3>
+<p>Disabled by default — enable them from the widget list.</p>
+<ul>
+<li><strong>Progress Bar</strong>: A full-width bar showing route or time progress. Includes an elevation silhouette, coloured segments for climbs and jumps, a glowing current-position indicator, and configurable labels. See the widget settings panel for bar style, colors, and label options.</li>
+<li><strong>Results Card</strong>: A summary card shown at a fixed time in the video (e.g., the finish). Displays total distance, moving time, elevation gain, average speed, average HR, and average power. Configure metrics and card style in the settings panel.</li>
+</ul>
+<h3 id="media-widgets">Media Widgets</h3>
+<p>Disabled by default — enable them from the widget list.</p>
+<ul>
+<li><strong>Picture-in-Picture (PiP)</strong>: Overlays your rear camera footage as a resizable rectangle. Requires a rear video to be loaded in the Media files tab. Position and size are set in the widget settings panel.</li>
+<li><strong>Flyover Map</strong>: Generates an animated map flyover from the GPS route and composites it as a video overlay. See the <a href="#flyover-map">Flyover Map</a> section for details.</li>
+</ul>
+<h3 id="plugin-widgets">Plugin Widgets</h3>
+<p>Advanced widgets delivered via the widget-plugins package. Disabled by default — enable from the widget list.</p>
+<ul>
+<li><strong>Header</strong>: A branded header bar that spans the top of the canvas. Configurable fields include sport icon, route name, distance, and elapsed time. Supports four built-in layout templates (broadcast lower-third, compact pill, minimal bar, route plate) plus full color and typography overrides.</li>
+<li><strong>Metric v2</strong>: A redesigned telemetry metric display with glass-effect backgrounds, fine-grained unit and precision control, and support for all telemetry fields (speed, HR, cadence, power, grade, distance, altitude). Use it as a replacement for the standard telemetry widgets when you want a more polished look.</li>
+</ul>
+<h3 id="annotation--event-widgets">Annotation &#x26; Event Widgets</h3>
+<ul>
+<li><strong>Comments</strong>: Timed text annotations that appear at specific moments. Enabled by default. See the <a href="#comments">Comments</a> section.</li>
+<li><strong>Top Moments</strong>: Automatically detects and highlights the best moments from your activity — speed peaks, power surges, HR zones, climbs, and jumps. See the <a href="#top-moments">Top Moments</a> section.</li>
+</ul>
+<h3 id="weather-widgets">Weather Widgets</h3>
+<ul>
+<li><strong>Estimated Wind</strong>: A themed plugin (in the Plugins list) showing estimated headwind / tailwind / crosswind from historical weather, in compact-card or compass-dial mode. Requires fetching wind history first. See the <a href="#estimated-wind">Estimated Wind</a> section.</li>
+</ul>
+<h3 id="widget-settings">Widget Settings</h3>
+<p>All widgets share these common controls:</p>
+<ul>
+<li><strong>Position</strong> (X/Y): drag on the canvas or type exact values</li>
+<li><strong>Preset size</strong>: Small / Medium / Big (sets default dimensions)</li>
+<li><strong>Enabled / disabled</strong>: toggle per widget</li>
+</ul>
+<hr>
+<h2 id="icon-picker">Icon Picker</h2>
+<p>Telemetry widgets that display an icon (Speed, Heart Rate, Cadence, Power, etc.) now support multiple icon variants that you can select directly from the editor.</p>
+<h3 id="how-to-use-1">How to Use</h3>
+<ol>
+<li>Select a widget that supports icons in the left panel.</li>
+<li>In the right panel, enable <strong>Display icon</strong>.</li>
+<li>Click <strong>Choose icon</strong> (or <strong>Change icon</strong> if one is already set).</li>
+<li>The icon picker opens and shows all available variants for that widget type.</li>
+<li>Click a variant to preview it themed with the widget’s current color.</li>
+<li>Click <strong>Apply</strong> to set the icon, or <strong>Cancel</strong> to close without changes.</li>
+</ol>
+<h3 id="how-variants-work">How Variants Work</h3>
+<p>Icons are stored in per-type directories under <code>public/icons/</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Widget type</th><th>Available variants (examples)</th></tr></thead><tbody><tr><td>Speed</td><td><code>default</code>, <code>filled</code></td></tr><tr><td>Heart Rate</td><td><code>default</code>, <code>filled</code>, <code>pulse</code></td></tr><tr><td>Power</td><td><code>default</code>, <code>flash</code>, <code>flash_filled</code></td></tr><tr><td>Cadence</td><td><code>default</code>, <code>filled</code></td></tr><tr><td>Others</td><td><code>default</code></td></tr></tbody></table>
+<p>All icons are color-normalized so they pick up the widget’s theme color automatically in both preview and final render.</p>
+<hr>
+<h2 id="comments">Comments</h2>
+<p>The comments panel lets you add timed text annotations that appear over the video during playback and rendering.</p>
+<h3 id="how-to-use-2">How to Use</h3>
+<ol>
+<li>Open the <strong>Comments</strong> tab in the bottom panel.</li>
+<li>Click <strong>Add Comment</strong> to create a new entry.</li>
+<li>Set the <strong>start time</strong> (hh:mm:ss) and <strong>duration</strong> for each comment.</li>
+<li>Type the comment text — it will be displayed on the overlay at the specified time.</li>
+<li>Use <strong>Set to current time</strong> to quickly align a comment with the current playback position.</li>
+<li>Use <strong>Navigate to time</strong> to jump the preview to a comment’s start.</li>
+<li><strong>Duplicate</strong> creates a copy of an existing comment for quick editing.</li>
+</ol>
+<h3 id="tips-6">Tips</h3>
+<ul>
+<li>Keep comments short for readability on screen.</li>
+<li>Use the profile image (set in Settings) to personalize the comments widget appearance.</li>
+</ul>
+<hr>
+<h2 id="output-transform">Output Transform</h2>
+<p>Output Transform sets the <strong>global framing</strong> applied to every Social Clip during render — one decision for the whole project instead of per-clip configuration. Reels, Feed posts, and custom aspect ratios all live here.</p>
+<h3 id="how-to-use-3">How to Use</h3>
+<ol>
+<li>Open the <strong>Output</strong> tab in the bottom panel.</li>
+<li>Toggle <strong>Enable Output Transform</strong> on. When off, clips render at their source resolution with no transformation.</li>
+<li>Pick a <strong>Preset</strong>:
+<ul>
+<li><strong>Instagram Reel</strong> — 1080 × 1920 (9:16 portrait)</li>
+<li><strong>Instagram Feed</strong> — 1080 × 1080 (1:1 square)</li>
+<li><strong>Custom</strong> — type your own width and height</li>
+</ul>
+</li>
+<li>Set the <strong>Rotation</strong> — <code>0°</code>, <code>+90°</code>, or <code>−90°</code>.</li>
+<li>Choose a <strong>Fit Mode</strong>:
+<ul>
+<li><strong>Cover</strong> — crop the source to fill the output (no letterboxing). The pan controls shift the crop window.</li>
+<li><strong>Contain</strong> — letterbox the source so the whole frame is visible. The pan controls shift the video inside the canvas.</li>
+</ul>
+</li>
+<li>Use the <strong>Pan X</strong> and <strong>Pan Y</strong> sliders (−1 to +1) to offset the crop or letterbox. <strong>Reset pan</strong> centers both.</li>
+<li>Toggle <strong>Include audio</strong> to keep or strip the audio track.</li>
+</ol>
+<h3 id="tips-7">Tips</h3>
+<ul>
+<li>Output Transform applies uniformly to every clip in the Social Clips list. To exclude a clip, toggle its <strong>Enabled</strong> switch in the Social Clips tab.</li>
+<li>HUD widgets are drawn at the final output size — corner-anchored widgets (like Header) re-position correctly when you switch aspect ratios; you do not need to re-place them.</li>
+<li>Settings here are saved with the project.</li>
+</ul>
+<h3 id="migration-from-earlier-versions">Migration from earlier versions</h3>
+<p>If you open a project saved before this version, per-clip framing fields (target resolution, rotation, fit mode, pan) on individual clips are silently dropped at load time. Use the global <strong>Output Transform</strong> to recreate the framing you had.</p>
+<hr>
+<h2 id="social-clips">Social Clips</h2>
+<p>Social Clips define short time-ranges within your project that are exported as standalone short videos — typically for Instagram Reels, Feed posts, or other social platforms.</p>
+<p><img alt="Social Clips" loading="lazy" decoding="async"  width="3840" height="2160" src="/velooverlay/_astro/clips.D0XnH0gC_1zbY5r.webp" ></p>
+<h3 id="how-to-use-4">How to Use</h3>
+<ol>
+<li>Open the <strong>Social Clips</strong> tab in the bottom panel.</li>
+<li>Click <strong>Add Clip</strong> to define a new segment.</li>
+<li>Set the <strong>clip name</strong>, <strong>start time</strong> (hh:mm:ss), and <strong>duration</strong> for each clip.</li>
+<li>Toggle <strong>Enabled</strong> on a clip to include it in the next render; toggle off to keep the definition but skip it.</li>
+<li>Use <strong>Set to current time</strong> to set the clip start from the current playback position.</li>
+<li>Use <strong>Navigate to time</strong> to preview a clip’s starting point.</li>
+<li><strong>Duplicate</strong> a clip to quickly create variations.</li>
+</ol>
+<h3 id="framing">Framing</h3>
+<p>Framing is <strong>global</strong> — resolution, rotation, fit mode, and pan are configured once in the <strong>Output</strong> tab (see <a href="#output-transform">Output Transform</a>) and applied to every clip. Per-clip framing is no longer supported.</p>
+<h3 id="tips-8">Tips</h3>
+<ul>
+<li>Use the <strong>Output</strong> tab to set up Reel-style portrait framing once; all your clips render the same way.</li>
+<li>Keep clips under 60 seconds for most social platforms.</li>
+<li>Each clip is rendered as a separate output file during the render step.</li>
+<li>After a multi-track trim (see <a href="#multi-track-trim">Multi-Track Trim</a>), check that no clips fall outside the new bounds.</li>
+</ul>
+<hr>
+<h2 id="top-moments">Top Moments</h2>
+<p>The Top Moments widget automatically detects the best moments in your activity — speed peaks, power surges, HR zones, climbs, and jumps — and displays a brief animated highlight card during those windows.</p>
+<p><img alt="Top Moments" loading="lazy" decoding="async"  width="3840" height="2160" src="/velooverlay/_astro/top_moments.CRfAPGTY_1mJppb.webp" ></p>
+<h3 id="how-to-use-5">How to Use</h3>
+<ol>
+<li>Enable the <strong>Moments Widget</strong> in the widget list.</li>
+<li>Open the <strong>Top Moments</strong> tab in the bottom panel.</li>
+<li>Choose which <strong>metrics</strong> to detect (speed, power, HR, climbs, jumps) and how many highlights to surface.</li>
+<li>Click <strong>Detect Moments</strong> — the app analyses your telemetry and populates the list.</li>
+<li>Review the detected moments in the list. You can remove individual items or adjust their labels.</li>
+<li>Click <strong>Widget</strong> on any moment to add it to the Highlights overlay. The card then reveals inline controls to edit that marker’s <strong>label</strong>, <strong>start time</strong>, and <strong>duration</strong> (or <strong>Remove</strong> it from the overlay).</li>
+</ol>
+<h3 id="tips-9">Tips</h3>
+<ul>
+<li>Moments are detected from your telemetry data, so a richer FIT file (with power, HR) produces more varied highlights.</li>
+<li>Adjust the <strong>maximum number of moments</strong> to keep the overlay from becoming crowded.</li>
+<li>Detected moments are saved with the project and do not need to be re-detected after reopening.</li>
+</ul>
+<hr>
+<h2 id="flyover-map">Flyover Map</h2>
+<p>The Flyover Map widget renders directly inside the normal preview and export pipeline. It can show a clean route-only view or an optional raster tile map background under the route.</p>
+<h3 id="requirements-1">Requirements</h3>
+<ul>
+<li>Your track must contain GPS data (lat/lon). FIT files from GPS-enabled devices and all GPX files qualify.</li>
+</ul>
+<h3 id="how-to-enable">How to Enable</h3>
+<ol>
+<li>Toggle the <strong>Flyover Map</strong> widget in the widget list (disabled by default).</li>
+<li>The widget appears immediately on the preview canvas and updates live as you scrub or play.</li>
+</ol>
+<h3 id="settings">Settings</h3>
+<p>Open the widget settings panel to configure:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Setting</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td>Mode</td><td><strong>Follow Camera</strong> for an immersive moving view, or <strong>Fit Route</strong> for a stable overview</td><td>Follow Camera</td></tr><tr><td>Rotate / North Up</td><td>Follow the rider heading or force a fixed north-up orientation</td><td>Rotate on</td></tr><tr><td>Width × Height</td><td>Widget dimensions in pixels</td><td>400 × 225</td></tr><tr><td>Map Background</td><td>Enable raster tile imagery under the route</td><td>On</td></tr><tr><td>Map Provider</td><td>Use the built-in OpenStreetMap tile template or a custom raster tile URL template</td><td>OpenStreetMap</td></tr><tr><td>Zoom Offset</td><td>Bias the automatically selected tile zoom</td><td><code>0</code></td></tr><tr><td>Fallback Color</td><td>Background color used when tiles are disabled or unavailable</td><td><code>#0f172a</code></td></tr><tr><td>Completed / Remaining Color</td><td>Route trail colors</td><td><code>#ff5500</code> / slate</td></tr><tr><td>Marker Color</td><td>Color of the moving position marker</td><td><code>#ffffff</code></td></tr></tbody></table>
+<h3 id="rendering-behavior">Rendering Behavior</h3>
+<p>The flyover widget is drawn directly by the renderer — no separate generation step:</p>
+<ol>
+<li>In the editor, the flyover updates live in preview.</li>
+<li>During export, required map tiles are preloaded before rendering starts.</li>
+<li>The flyover widget is composited at the lowest widget layer, so other widgets can sit on top of a full-screen flyover.</li>
+</ol>
+<h3 id="tile-cache-controls">Tile Cache Controls</h3>
+<p>The widget settings panel includes a <strong>Tile Cache</strong> section:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Description</th></tr></thead><tbody><tr><td>Cache info</td><td>Shows how many tiles are stored on disk and the total size</td></tr><tr><td><strong>Refresh</strong></td><td>Reload the current cache stats</td></tr><tr><td><strong>Clear Cache</strong></td><td>Delete all cached tiles from disk — they will be re-fetched on next use</td></tr></tbody></table>
+<p>Use <strong>Clear Cache</strong> when you switch to a different map provider or want to free up disk space.</p>
+<h3 id="tips-10">Tips</h3>
+<ul>
+<li>Use <strong>Follow Camera</strong> for a cinematic full-screen map and <strong>Fit Route</strong> for a PiP overview.</li>
+<li>If you work offline, previously cached tiles are reused automatically.</li>
+<li>If tiles are unavailable, the route still renders over the fallback background color.</li>
+</ul>
+<hr>
+<h2 id="estimated-wind">Estimated Wind</h2>
+<p>VeloOverlay can estimate whether you faced a <strong>headwind</strong>, <strong>tailwind</strong>, or <strong>crosswind</strong> during an
+activity and show it on the overlay. Wind is <strong>estimated from historical weather</strong> (the
+<a href="https://open-meteo.com/">Open-Meteo</a> Historical Weather API), not measured by an on-bike sensor — so
+treat it as a model estimate, not exact wind.</p>
+<h3 id="requirements-2">Requirements</h3>
+<ul>
+<li>The activity must have <strong>GPS coordinates</strong> and <strong>timestamps</strong> (any FIT/GPX/TCX import with a
+recorded route and start time).</li>
+<li>An internet connection is needed <strong>once</strong>, to fetch the wind history. After that the data is saved
+with the project and renders work offline.</li>
+</ul>
+<h3 id="fetching-wind-history">Fetching wind history</h3>
+<ol>
+<li>Open the <strong>Wind</strong> tab in the bottom panel.</li>
+<li>Click <strong>Fetch Historical Wind</strong>. VeloOverlay samples a handful of points along your route
+(up to 25), requests hourly wind for the activity’s date, and computes head/tail/crosswind from
+your GPS heading.</li>
+<li>When it finishes you’ll see a summary: provider, date, sample counts, average wind, and the
+strongest head/tail/crosswind. Use <strong>Refresh wind data</strong> to re-fetch or <strong>Clear wind data</strong> to
+remove it.</li>
+</ol>
+<blockquote>
+<p><strong>Privacy:</strong> fetching sends sampled route coordinates and the activity date to Open-Meteo.
+Wind is never fetched automatically — only when you click Fetch.</p>
+</blockquote>
+<h3 id="adding-the-widget">Adding the widget</h3>
+<p>Add the <strong>Estimated Wind</strong> widget from the <strong>Plugins</strong> list in the Widgets panel. It has two
+modes (Widget Inspector → <strong>Mode</strong>):</p>
+<ul>
+<li><strong>Compact card</strong> — a glass card with a small compass dial, the current classification, the
+component (or wind) speed, and the wind direction, e.g. <code>HEADWIND · 12 km/h · from NW</code>.</li>
+<li><strong>Compass</strong> — a large compass dial: you (the rider) always face up, with a colored arrow showing
+where the wind is coming from and motion streaks for its strength.</li>
+</ul>
+<p>The dial shows a top-down cyclist with the wind arrow colored by type (headwind, tailwind, or
+crosswind). The widget follows your chosen <strong>HUD theme</strong> (Cyberpunk, Retro, Glass, etc.). The preview
+and the final render use the same wind values. Activities without wind data simply show a muted “no
+data” state — they never block rendering.</p>
+<h3 id="limitations-1">Limitations</h3>
+<ul>
+<li>Historical wind is hourly and modelled; real wind felt on the bike varies with terrain, trees,
+buildings, gusts, and drafting.</li>
+<li>Very recent activities may not have published weather yet.</li>
+</ul>
+<hr>
+<h2 id="hud-presets--theme-links">HUD Presets &#x26; Theme Links</h2>
+<p>The editor includes a preset-driven HUD styling workflow.</p>
+<h3 id="presets">Presets</h3>
+<ul>
+<li>Choose from built-in preset themes (for example Carbon, Steel, Garmin, Strava, and light variants).</li>
+<li>Presets define coordinated colors for card background, borders, primary/secondary text, and accent/icon tokens.</li>
+</ul>
+<h3 id="apply-modes">Apply Modes</h3>
+<ul>
+<li><strong>New only</strong>: Keep existing styles as-is; use preset behavior only for newly linked fields.</li>
+<li><strong>Preset-linked only</strong>: Update only fields currently linked to the selected preset.</li>
+<li><strong>Overwrite all</strong>: Re-link all themed color fields to preset tokens and apply the selected preset globally.</li>
+</ul>
+<h3 id="linked-vs-custom-colors">Linked vs Custom Colors</h3>
+<ul>
+<li>Linked fields follow the active preset when you switch themes.</li>
+<li>Custom fields stay fixed and are not changed by preset switches.</li>
+<li>Use linked fields for global consistency, then override selected fields as custom when needed.</li>
+</ul>
+<hr>
+<h2 id="rendering-videos">Rendering Videos</h2>
+<h3 id="render-modes">Render Modes</h3>
+<ul>
+<li><strong>Overlay</strong>: Transparent WebM (for video editors)</li>
+<li><strong>Composite</strong>: Final MP4 with the overlay on top of your footage</li>
+</ul>
+<p><img alt="Render settings" loading="lazy" decoding="async"  width="3840" height="2160" src="/velooverlay/_astro/render.3AW5liT0_y480j.webp" ></p>
+<h3 id="video-tuning">Video Tuning</h3>
+<p>Before starting a render you can apply real-time color corrections to your footage. In the render page, expand the <strong>Video Tuning</strong> panel:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Range</th><th>What it does</th></tr></thead><tbody><tr><td>Brightness</td><td>−100 → +100</td><td>Overall exposure offset</td></tr><tr><td>Contrast</td><td>0 → 200</td><td>Tonal range expansion/compression</td></tr><tr><td>Saturation</td><td>0 → 200</td><td>Color intensity (0 = greyscale)</td></tr><tr><td>Gamma</td><td>0.50 → 2.00</td><td>Midtone brightness curve</td></tr><tr><td>Sharpness</td><td>0 → 100</td><td>Edge enhancement (unsharp mask)</td></tr><tr><td>Mute audio</td><td>on/off</td><td>Strip audio from the main track</td></tr></tbody></table>
+<ul>
+<li>If a <strong>rear video</strong> is loaded, use the <strong>Main / Rear / Both</strong> toggle to apply adjustments independently or together.</li>
+<li>Click <strong>Copy main → rear</strong> to apply the same corrections to the rear track.</li>
+<li>Sliders with a <strong>↺</strong> button next to them have been changed from their default — click it to reset that value.</li>
+<li>Click <strong>Reset defaults</strong> to restore all adjustments at once.</li>
+</ul>
+<p>All adjustments are applied by FFmpeg during the encode pass and are saved with the project.</p>
+<h3 id="start-a-render">Start a Render</h3>
+<ol>
+<li>Click <strong>Render Video</strong> in the editor.</li>
+<li>Choose mode, resolution, FPS, and encoding.</li>
+<li>If using Composite, select main and rear videos.</li>
+<li>Optionally adjust <strong>Video Tuning</strong> before rendering.</li>
+<li>Click <strong>Start Render</strong>.</li>
+</ol>
+<p><img alt="Rendering progress" loading="lazy" decoding="async"  width="3840" height="2160" src="/velooverlay/_astro/rendering_progress.zNsx4Xjb_Z14kcaO.webp" ></p>
+<h3 id="after-render">After Render</h3>
+<ul>
+<li>Use <strong>Open output folder</strong> in the Render page to reveal the file.</li>
+<li>The default output location is configurable in Settings.</li>
+</ul>
+<p><img alt="Render results" loading="lazy" decoding="async"  width="1049" height="635" src="/velooverlay/_astro/render_results.YKMBDCWX_Z1jEiuQ.webp" ></p>
+<h3 id="encoder-auto-selection">Encoder Auto-Selection</h3>
+<p>When the requested encoder is <code>libx264</code> (the default), the renderer probes the system at startup and may automatically upgrade to a <strong>hardware encoder</strong> for faster encoding:</p>
+<ul>
+<li><strong>NVIDIA</strong> GPUs → NVENC (h264_nvenc / hevc_nvenc)</li>
+<li><strong>Intel</strong> integrated GPUs → QSV (Quick Sync)</li>
+<li><strong>AMD</strong> GPUs → AMF</li>
+</ul>
+<p>The renderer only auto-upgrades to <em>hardware</em> encoders. It never silently switches to a different software codec (e.g. it will never pick libx265 unless you ask for it). To disable auto-upgrade entirely, set the encoder explicitly in <strong>Settings → Rendering</strong> or in the Render dialog.</p>
+<p>The chosen encoder, the probe result, and any fallback reason are visible in the <strong>Render Debug Panel</strong> described below.</p>
+<h3 id="render-debug-panel">Render Debug Panel</h3>
+<p>If a render seems stuck or you want to verify the encoder it picked, enable the diagnostic panel:</p>
+<ol>
+<li>Open <strong>Settings → Diagnostics</strong>.</li>
+<li>Toggle <strong>Show Render Debug Panel</strong> on.</li>
+<li>Start a render. The panel appears below the standard progress UI on the Render page.</li>
+</ol>
+<p>The panel surfaces:</p>
+<ul>
+<li><strong>Timing</strong> — elapsed time since the last frame was emitted (<code>staleFor</code>). A “possible hang” pill highlights when nothing has moved for more than 5 seconds during the rendering phase.</li>
+<li><strong>Pipeline</strong> — mode (Composite / Clips / Overlay), codec, FPS, resolution, worker count.</li>
+<li><strong>Encoder</strong> — which encoder was requested, which one is actually being used, whether the auto-upgrade picked a hardware encoder, and if a fallback occurred, the exact FFmpeg error.</li>
+<li><strong>Log tail</strong> — the last 30 structured log events, pretty-printed.</li>
+<li><strong>Raw payload</strong> — the full progress JSON, collapsed.</li>
+</ul>
+<p>Render logs are stored in the app’s local database (not a file). When filing a render bug, export them via <strong>Settings → Diagnostics → Export Diagnostic Bundle</strong>.</p>
+<hr>
+<h2 id="uploading-to-youtube">Uploading to YouTube</h2>
+<p>Publish a finished render straight to your YouTube channel — either with an <strong>Upload to YouTube</strong> button after the render completes, or automatically via a per-render checkbox.</p>
+<h3 id="setup-one-time">Setup (one-time)</h3>
+<p>YouTube uploads use your own (free) Google Cloud project:</p>
+<ol>
+<li>Go to the <a href="https://console.cloud.google.com/">Google Cloud Console</a> and create a project.</li>
+<li>Under <strong>APIs &#x26; Services → Library</strong>, enable the <strong>YouTube Data API v3</strong>.</li>
+<li>Under <strong>APIs &#x26; Services → Credentials</strong>, create an <strong>OAuth client ID</strong> of type <strong>“Desktop app”</strong> and copy the Client ID and Client Secret. (The Desktop type is important — it lets the sign-in redirect work on any local port, so you can leave the Redirect URI field in the app blank.)</li>
+<li>Under <strong>OAuth consent screen</strong>, add your Google account as a <strong>test user</strong>.</li>
+<li>In VeloOverlay, open <strong>Settings → Integrations → YouTube</strong>, paste the Client ID and Secret, pick a default visibility, and click <strong>Save</strong>. In the desktop app the secret is encrypted at rest via the OS keychain.</li>
+<li>Click <strong>Connect channel</strong> — a Google sign-in popup opens; choose the account or brand channel to upload to and approve access. The connected channel name appears in Settings. To switch channels, disconnect and connect again.</li>
+</ol>
+<h3 id="manual-upload">Manual upload</h3>
+<p>After a render completes, an <strong>Upload to YouTube</strong> button appears next to the other actions on the render page. Clicking it opens a dialog prefilled with a title (from your activity name and date), a description (sport, location, duration, resolution), and the visibility — edit anything, then click <strong>Upload</strong>. A progress bar tracks the upload; when it finishes you get a direct <strong>View on YouTube</strong> link. Failed uploads show the error with a <strong>Retry</strong> button, and an in-flight upload can be cancelled.</p>
+<h3 id="automatic-upload">Automatic upload</h3>
+<p>When a channel is connected, the render page shows an <strong>“Upload to YouTube when done”</strong> checkbox above the Start Rendering button. Tick it and the upload starts by itself the moment the render completes, using the generated title/description and your default visibility. The choice sticks for future renders, and it survives app restarts mid-render — a resumed chunked render still uploads when it eventually finishes. Cancelled or failed renders are never uploaded.</p>
+<h3 id="what-can-be-uploaded">What can be uploaded</h3>
+<p>Uploads work for renders that produce a <strong>single video file</strong>: overlay and composite renders, and Social Clips renders with <strong>Combine clips into one video</strong> enabled. When a clips render produces multiple separate files, the upload button is not offered — combine the clips or upload them manually.</p>
+<h3 id="good-to-know">Good to know</h3>
+<ul>
+<li><strong>Visibility while unverified:</strong> until your Google Cloud project passes Google’s verification, YouTube forces uploads from it to <strong>Private</strong> regardless of the visibility you choose. For personal use this is normal — the video uploads fine; you can change its visibility manually in YouTube Studio.</li>
+<li><strong>Daily quota:</strong> each upload costs 1,600 units of the API’s default 10,000/day quota — roughly 6 uploads per day.</li>
+<li><strong>Interrupted uploads:</strong> if the app restarts mid-upload, the upload is lost (the rendered file is not) — just click Upload again.</li>
+</ul>
+<hr>
+<h2 id="lut-color-correction">LUT Color Correction</h2>
+<p>Apply a <code>.cube</code> color look-up table (LUT) to the composited output for cinematic grading — directly inside the FFmpeg render pipeline, with no round-trip to an external editor.</p>
+<h3 id="setup-2">Setup</h3>
+<h4 id="desktop-app-1">Desktop app</h4>
+<ol>
+<li>Open <strong>Settings → Paths</strong>.</li>
+<li>Set the <strong>LUT Library Folder</strong> to the directory containing your <code>.cube</code> files.</li>
+<li>The app scans this folder and makes all found LUTs available in the Video Tuning panel.</li>
+</ol>
+<h4 id="web-mode-1">Web mode</h4>
+<p>Set the <code>TELEMETRY_LUTS_DIR</code> environment variable in <code>apps/web/.env.local</code> to your <code>.cube</code> folder path. If unset, <code>public/luts/</code> inside the app is used as a fallback.</p>
+<h3 id="applying-a-lut">Applying a LUT</h3>
+<ol>
+<li>Go to the <strong>Render</strong> page.</li>
+<li>Expand <strong>Video Tuning</strong>.</li>
+<li>Select a LUT from the <strong>LUT File</strong> dropdown. Only <code>.cube</code> files found in the configured library folder are listed.</li>
+<li>The LUT is applied globally to the composited video during encoding — it does not affect the editor preview.</li>
+</ol>
+<h3 id="tips-11">Tips</h3>
+<ul>
+<li>LUTs work best on log-profile (D-Log, V-Log, S-Log) footage. Applying a LUT to standard color footage may produce unexpected results.</li>
+<li>The LUT is applied after all Video Tuning adjustments (brightness, contrast, etc.).</li>
+<li>To remove a LUT, select <strong>None</strong> from the dropdown.</li>
+</ul>
+<hr>
+<h2 id="exporting-images">Exporting Images</h2>
+<p>Export a single high-resolution image of the current frame with all your telemetry widgets. Useful for sharing ride snapshots on social media without rendering a full video.</p>
+<h3 id="how-to-export">How to Export</h3>
+<ol>
+<li>Open the editor with a track loaded and scrub to the frame you want to capture.</li>
+<li>Click <strong>Export Image</strong> in the right-hand actions sidebar.</li>
+<li>A modal appears with resolution controls:
+<ul>
+<li><strong>Quick presets</strong>: 1080p, 2K, and 4K. Each preset’s pixel dimensions are derived from the <strong>project’s canvas aspect ratio</strong>, so a 9:16 portrait project renders 4K as 2160×3840, and a 1:1 square project renders 4K as 2160×2160.</li>
+<li><strong>Custom dimensions</strong>: type any width and height. The aspect lock is not enforced for custom values.</li>
+</ul>
+</li>
+<li>Click <strong>Export PNG</strong>. The modal closes immediately; the export runs in the background. A toast notification confirms success (with the saved file path) or surfaces an error if anything goes wrong.</li>
+</ol>
+<h3 id="whats-included">What’s Included</h3>
+<ul>
+<li>The main video frame at the scrubbed timestamp (if a video is selected).</li>
+<li>Rear camera PiP overlay (if a PiP widget is enabled).</li>
+<li>All enabled telemetry widgets rendered at the chosen resolution.</li>
+</ul>
+<h3 id="tips-12">Tips</h3>
+<ul>
+<li>Preset labels update dynamically to show the resolved W × H for your project’s aspect — don’t be surprised if “4K” reads 2160×3840 on a portrait project.</li>
+<li>If no video is selected, the export contains only the widget overlay on a transparent background, which you can composite onto any image in an external editor.</li>
+<li>Larger resolutions take longer to generate since the server renders the full frame at that size.</li>
+</ul>
+<hr>
+<h2 id="managing-output--logs">Managing Output &#x26; Logs</h2>
+<h3 id="output-files">Output Files</h3>
+<ul>
+<li><strong>Overlay</strong> outputs: <code>.webm</code></li>
+<li><strong>Composite</strong> outputs: <code>.mp4</code></li>
+</ul>
+<h3 id="logs">Logs</h3>
+<ul>
+<li>Open <strong>Settings → Paths</strong> to see where logs are stored (Logs Directory).</li>
+<li>Render page includes <strong>View render logs</strong> for job-specific troubleshooting.</li>
+</ul>
+<hr>
+<h2 id="tips--best-practices">Tips &#x26; Best Practices</h2>
+<ul>
+<li>Use 1080p/30fps for most projects.</li>
+<li>Keep widgets readable: 3–6 widgets is a clean layout.</li>
+<li>Use the <strong>Preview</strong> to spot layout issues before rendering.</li>
+<li>If a render is slow, try lower resolution or GPU encoding.</li>
+<li>Use a full-screen flyover when you want a map-first sequence, then layer metric widgets above it.</li>
+<li>For GoPro multi-chapter recordings, add all chapter files with <strong>+ Multi</strong> and verify order in <strong>Manage clips</strong> before rendering.</li>
+</ul>
+<hr>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="upload-failed-internal-server-error">”Upload failed: Internal Server Error”</h3>
+<ul>
+<li>Check the <strong>Logs Directory</strong> (Settings → Paths) for <code>web.log</code>.</li>
+<li>Try re-exporting your FIT/GPX file from the original device/app.</li>
+</ul>
+<h3 id="missing-video-options">Missing video options</h3>
+<ul>
+<li>Ensure <strong>Default Input Folder</strong> is set in <strong>Settings → Paths</strong> and contains the videos.</li>
+<li>The editor reads available files from the input folder.</li>
+</ul>
+<h3 id="ffmpeg-errors">FFmpeg errors</h3>
+<ul>
+<li>Set the <strong>FFmpeg Path</strong> in <strong>Settings → Paths</strong>.</li>
+<li>Verify <code>ffmpeg -version</code> runs in your terminal (optional).</li>
+</ul>
+<h3 id="render-fails-or-hangs">Render fails or hangs</h3>
+<ul>
+<li>Open <strong>View render logs</strong> on the Render page.</li>
+<li>Check disk space in the output folder.</li>
+</ul>
+<h3 id="gopro-hevc-video-wont-play-in-the-editor">GoPro HEVC video won’t play in the editor</h3>
+<p>Chrome and Firefox on Windows/Linux cannot decode HEVC/H.265 without extra codecs.</p>
+<ul>
+<li>If a <code>.LRV</code> sidecar file exists next to the clip (GoPro HERO 8+), the editor uses it as an instant proxy — no waiting.</li>
+<li>If no sidecar exists, the editor generates an H.264 proxy automatically. A progress indicator appears in the video area. Playback starts when the proxy is ready.</li>
+<li>The proxy is only used for preview; renders always use the original HEVC file at full quality.</li>
+<li>For details, see <a href="#video-playback-under-the-hood">Video Playback (Under the Hood)</a>.</li>
+</ul>
+<h3 id="timeline-scrubbing-feels-laggy">Timeline scrubbing feels laggy</h3>
+<ul>
+<li>Make sure you’re playing the preview proxy (look for the “HEVC source — using H.264 proxy” indicator if you’re on a GoPro file). If the original HEVC is being played directly, decoding overhead is the bottleneck.</li>
+<li>The timeline scrub controller decouples widget updates from video seeks — widgets stay responsive even if the video element is slow. If the widgets themselves feel laggy, file a bug and include a <a href="#render-debug-panel">Render Debug Panel</a> snapshot.</li>
+</ul>
+<h3 id="hardware-encoder-nvenc--qsv--amf-not-detected">Hardware encoder (NVENC / QSV / AMF) not detected</h3>
+<ul>
+<li>Enable the <a href="#render-debug-panel">Render Debug Panel</a> and start a render. The Encoder section shows the probe result and the FFmpeg error if any.</li>
+<li>On NVIDIA cards, the probe runs against a 320×240 test frame because NVENC silently fails on frames below ~128×128. If you see a “Frame Dimension” error, your driver may be out of date — update GPU drivers and restart the app.</li>
+<li>To force CPU encoding (e.g. for debugging), set the encoder explicitly in <strong>Settings → Rendering</strong>.</li>
+</ul>
+<h3 id="proxy-generation-stalls-or-never-finishes">Proxy generation stalls or never finishes</h3>
+<ul>
+<li>Check the <a href="#render-debug-panel">Render Debug Panel</a> or <code>web.log</code> for FFmpeg errors.</li>
+<li>Delete the partial file from the proxy cache directory (see <a href="#video-playback-under-the-hood">Video Playback</a> for paths) and retry.</li>
+<li>Make sure your output disk has room — proxies are ~1/5 to 1/10 the size of the source but still substantial for long clips.</li>
+</ul>
+<h3 id="flyover-map-tiles-are-missing">Flyover map tiles are missing</h3>
+<ul>
+<li>Ensure your track contains GPS data (latitude/longitude).</li>
+<li>Check that the selected tile provider URL is reachable.</li>
+<li>If you are offline, use cached tiles or disable the map background for a route-only flyover.</li>
+</ul>
+<h3 id="auto-sync-returns-low-confidence">Auto Sync returns low confidence</h3>
+<ul>
+<li>Low confidence (> 100 m mean GPS error) usually means the GoPro video and FIT file cover different route segments or time windows.</li>
+<li>Check that you loaded the correct FIT file for the activity recorded on the GoPro.</li>
+<li>Try adjusting the trim start in the <strong>Media files</strong> tab before re-running Auto Sync.</li>
+</ul>
+<h3 id="estimated-wind-is-unavailable-or-shows-no-data">Estimated Wind is unavailable or shows “no data”</h3>
+<ul>
+<li>The <strong>Wind</strong> tab says wind needs GPS coordinates and timestamps — make sure the imported activity
+has a recorded route and a start time (most FIT/GPX/TCX files do).</li>
+<li>“Historical wind could not be fetched” usually means no internet connection, or the activity is too
+recent for published weather. Check your connection and try <strong>Fetch Historical Wind</strong> again later.</li>
+<li>The widget shows “no data” until you fetch wind history in the <strong>Wind</strong> tab. After fetching, the
+data is saved with the project and renders offline.</li>
+</ul>
+<hr>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Where are my settings stored?</strong>
+A: In the desktop app user data directory. You can find it via the Logs Directory path (Settings → Paths).</p>
+<p><strong>Q: Does the desktop app work offline?</strong>
+A: Yes. All parsing and rendering is local. The Flyover Map can reuse cached tiles offline, or render route-only without tiles. Auto Sync requires the video to be on disk (no internet needed).</p>
+<p><strong>Q: Where do rendered videos go?</strong>
+A: The <strong>Default Output Folder</strong> set in Settings → Paths. Use <strong>Open output folder</strong> after render.</p>
+<p><strong>Q: Can I use my GPU?</strong>
+A: Yes. Choose an encode mode in Settings → Rendering or in the render dialog when available.</p>
+<p><strong>Q: Where is the full documentation?</strong>
+A: Use <strong>Help → Documentation</strong> in the desktop app.</p>
+<p><strong>Q: Does the Flyover Map widget need an API key?</strong>
+A: Not by default. The built-in OpenStreetMap tile template works without an API key, and you can also point the widget at your own raster tile source.</p>
+<p><strong>Q: My GoPro recording is split into multiple files. Do I need to join them first?</strong>
+A: No. Use <strong>+ Multi</strong> in the Media files tab to load all chapter files. The renderer stitches them automatically — no transcoding, no quality loss.</p>
+<p><strong>Q: Can I use custom icons?</strong>
+A: Yes. Place a normalized SVG in <code>public/icons/{widgetType}/</code> inside the app’s resources folder and it will appear in the icon picker automatically.</p>
+<p><strong>Q: Can I import activities from Strava?</strong>
+A: Yes. Configure your Strava OAuth credentials in <strong>Settings → Integrations</strong> (desktop) or in <code>.env.local</code> (web), then click <strong>Import from Strava</strong> in the editor. Activities are downloaded as TCX files and include GPS, altitude, heart rate, cadence, power, and temperature where recorded. You no longer need a separate FIT file for HR or power when importing from Strava.</p>
+<hr>
+<p>Thank you for using VeloOverlay Toolkit.</p> </div> </div> </article> <div id="docs-lightbox" class="docs-lightbox" hidden role="dialog" aria-modal="true" aria-label="Image preview"> <img id="docs-lightbox-img" alt=""> </div> <script type="module">const c=document.querySelector(".docs-prose"),t=document.getElementById("docs-lightbox"),o=document.getElementById("docs-lightbox-img");if(c&&t&&o){const d=()=>{t.hidden=!0,o.removeAttribute("src"),document.body.style.overflow=""};c.querySelectorAll("img").forEach(e=>{e.classList.add("docs-zoomable"),e.addEventListener("click",()=>{o.src=e.currentSrc||e.src,o.alt=e.alt||"",t.hidden=!1,document.body.style.overflow="hidden"})}),t.addEventListener("click",d),document.addEventListener("keydown",e=>{e.key==="Escape"&&!t.hidden&&d()})}</script>  </main> <footer class="border-t border-slate-800 bg-slate-950 px-4 py-12 sm:px-6 lg:px-8"> <div class="mx-auto max-w-7xl"> <div class="flex flex-col items-center justify-between gap-6 sm:flex-row"> <div class="flex items-center gap-2"> <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">VeloOverlay Toolkit</span> </div> <p class="text-sm text-slate-400">
+&copy; 2026 Andrey Obrezkov. All rights reserved.
+</p> <div class="flex space-x-6 text-slate-400"> <a href="https://github.com/andreyobrezkov/velooverlay" class="hover:text-white"> <span class="sr-only">GitHub</span> <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path> </svg> </a> </div> </div> </div> </footer> </body></html>
